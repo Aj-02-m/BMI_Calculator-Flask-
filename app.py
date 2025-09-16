@@ -4,7 +4,7 @@ from flask import Flask,request,render_template,redirect,url_for
 
 app = Flask(__name__)
 
-@app.route('/bmi_calculator' ,methods=['GET','POST'])
+@app.route('/' ,methods=['GET','POST'])
 def bmi_calculator():
     bmi = None
     if request.method == 'POST' and 'weight' and 'height' in request.form:
