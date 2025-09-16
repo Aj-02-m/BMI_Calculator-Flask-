@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<title>BMI Calculator</title>
+	<link rel='stylesheet' type='text/css' href="{{url_for('static',filename='css/style.css')}}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+	
+
+</head>
+<body>
+	<div>
+		<h3> To know your BMI, Enter your details </h3>
+		
+		<form class="pure-form" method='POST'>
+		    <legend><h2>BMI Calculator</h2></legend>
+			<div class='input'>
+			<label class ='calmn'>Weight: </label> <input type='number' class="pure-input-rounded calmn" placeholder='enter weight in kgs' name="weight"/><br>
+			<label class ='calmn'>Height: </label> <input type='number' class="pure-input-rounded calmn" placeholder='enter weight in cms'name="height"/><br>
+			<button type="submit" class="pure-button pure-button-primary calmn" value='submit'>Submit</button>
+			</div>
+		</form>
+		{% if bmi is not none %}
+			{%if bmi | float <=0 or bmi == '' %}
+				<p>{{bmi}}</p>
+			{%elif bmi | float <= 18.5 %}
+				<h4 id="UW">your Body mass Index: <span>{{bmi}}</span> & Let's mindfully nourish your body with wholesome foods to support healthy weight and vitality</h4>
+			{%elif bmi | float <= 24.9 %}
+				<h4 id="NW">your Body mass Index: <span>{{bmi}}</span> & Excellent work maintaining a balanced diet; continue prioritizing your well-being with these healthy choices</h4>
+			{%elif bmi | float <= 29.9 %}
+				<h4 id="OW">your Body mass Index: <span>{{bmi}}</span> & Let's focus on nurturing healthy habits that gently guide you towards a healthier weight</h4>
+			{%elif bmi | float <= 34.9 %}
+				<h4 id="O">your Body mass Index: <span>{{bmi}}</span> & It's important to thoughtfully plan and commit to a balanced, healthy approach for achieving your weight loss goals</h4>
+			{%elif bmi | float >=35.0 %}
+				<h4 id="EO">your Body mass Index: <span>{{bmi}}</span> & Your health is paramount; let's give serious and caring attention to making positive changes for your well-being</h4>
+			{% endif %}
+			
+		{% endif %}
+		<br>
+		<table class="pure-table">
+			<thead>
+				<tr>
+					<th>Categories</th>
+					<th>Range</th>
+					<th>Health Issue</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="UW">Under Weight</td>
+					<td><18.5</td>
+					<td>Nutrition Deficiency & Fragile Bones</td>
+				</tr>
+				<tr>
+					<td id="NW">Normal Weight</td>
+					<td>18.5-24.9</td>
+					<td>Overall Good</td>
+				</tr>
+				<tr>
+					<td id="OW">Over Weight</td>
+					<td>25.0-29.9</td>
+					<td>Type 2 Diabetics & Heart Related issues</td>
+				</tr>
+				<tr>
+					<td id="O">Obese</td>
+					<td>30.0-34.9</td>
+					<td>Heart disease & Stroke & Osteoarthritis</td>
+				</tr>
+				<tr>
+					<td id="EO">Extremely Obese</td>
+					<td>>35.0</td>
+					<td>Certain Cancers & Metabolic</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

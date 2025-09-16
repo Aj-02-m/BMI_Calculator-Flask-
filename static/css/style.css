@@ -1,0 +1,68 @@
+*{
+	padding: 0;
+	box-shadow:border-box;
+	margin: 0
+}
+
+body{
+	text-align:center;
+	padding:20px;
+	background-color:black;
+	color:white
+}
+
+div form{
+	padding:10px;
+	margin-top:10px
+}
+div form legend h2{
+	font-weight:bolder;
+	color:red
+}
+
+div form label{
+	font-weight:bolder
+}
+
+div form div{
+	padding:10px;
+	margin-bottom:10px
+}
+
+.calmn{
+	margin:5px 0px
+}
+
+table{
+	margin-left:auto;
+	margin-right:auto;
+	border-collapse:collapse;
+}
+
+span{
+	font-weight:bolder
+}
+
+#UW{
+	color:blue
+}
+
+#NW{
+	color:green
+}
+
+#OW{
+	color:Yellow;
+	font-weight:bolder
+}
+
+#O{
+	color:orange
+}
+
+#EO{
+	color:red;
+}
+
+
+
