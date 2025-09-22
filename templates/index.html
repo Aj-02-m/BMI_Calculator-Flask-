@@ -13,18 +13,18 @@
 	<div>
 		<h3> To know your BMI, Enter your details </h3>
 		
-		<form class="pure-form" method='POST'>
+		<form class="pure-form" method='POST' autocomplete="off">
 		    <legend><h2>BMI Calculator</h2></legend>
 			<div class='input'>
-			<label class ='calmn'>Weight: </label> <input type='number' class="pure-input-rounded calmn" placeholder='enter weight in kgs' name="weight" step='0.01'/><br>
-			<label class ='calmn'>Height: </label> <input type='number' class="pure-input-rounded calmn" placeholder='enter weight in cms'name="height" step='0.01'/><br>
+			<label class ='calmn'>Weight: </label> <input type='number' class="pure-input-rounded calmn" placeholder='enter weight in kgs' name="weight" step='0.01' value={{weight}} required autocomplete="off" /><br>
+			<label class ='calmn'>Height: </label> <input type='number' class="pure-input-rounded calmn" placeholder='enter weight in cms'name="height" step='0.01' value={{height}} required autocomplete="off" /><br>
 			<button type="submit" class="pure-button pure-button-primary calmn" value='submit'>Submit</button>
 			</div>
 		</form>
-		{% if bmi is not none %}
-			{%if bmi | float <=0 or bmi == '' %}
-				<p>{{bmi}}</p>
-			{%elif bmi | float <= 18.5 %}
+		{% if bmi_error %}
+			<p id='EO'>{{bmi_error}}</p>
+		{% elif bmi %}
+			{% if bmi | float <= 18.5 %}
 				<h4 id="UW">your Body mass Index: <span>{{bmi}}</span> & Let's mindfully nourish your body with wholesome foods to support healthy weight and vitality</h4>
 			{%elif bmi | float <= 24.9 %}
 				<h4 id="NW">your Body mass Index: <span>{{bmi}}</span> & Excellent work maintaining a balanced diet; continue prioritizing your well-being with these healthy choices</h4>
