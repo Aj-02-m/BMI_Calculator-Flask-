@@ -43,24 +43,25 @@ span{
 	font-weight:bolder
 }
 
-#UW{
-	color:blue
+.UW{
+	color:yellow;
+	font-weight:bolder
 }
 
-#NW{
+.NW{
 	color:green
 }
 
-#OW{
+.OW{
 	color:Yellow;
 	font-weight:bolder
 }
 
-#O{
+.O{
 	color:orange
 }
 
-#EO{
+.EO{
 	color:red;
 }
 

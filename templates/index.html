@@ -17,23 +17,49 @@
 		    <legend><h2>BMI Calculator</h2></legend>
 			<div class='input'>
 			<label class ='calmn'>Weight: </label> <input type='number' class="pure-input-rounded calmn" placeholder='enter weight in kgs' name="weight" step='0.01' value={{weight}} required autocomplete="off" /><br>
-			<label class ='calmn'>Height: </label> <input type='number' class="pure-input-rounded calmn" placeholder='enter height in cms'name="height" step='0.01' value={{height}} required autocomplete="off" /><br>
-			<button type="submit" class="pure-button pure-button-primary calmn" value='submit'>Submit</button>
-			</div>
+        <label class='calmn'>Height: </label>
+
+		<select name="height_ft" class="pure-input-rounded calmn"  value={{height_ft}} required>
+		<option value="">Select feet</option>
+		<option value="4" {% if height_ft == "4" %}selected{% endif %}>4 ft</option>
+		<option value="5" {% if height_ft == "5" %}selected{% endif %}>5 ft</option>
+		<option value="6" {% if height_ft == "6" %}selected{% endif %}>6 ft</option>
+		<option value="7" {% if height_ft == "7" %}selected{% endif %}>7 ft</option>
+        </select>
+
+		<select name="height_in" class="pure-input-rounded calmn" value={{height_in}} required>
+  		<option value="">Select inches</option>
+  		<option value="0" {% if height_in == "0" %}selected{% endif %}>0 in</option>
+  		<option value="1" {% if height_in == "1" %}selected{% endif %}>1 in</option>
+  		<option value="2" {% if height_in == "2" %}selected{% endif %}>2 in</option>
+  		<option value="3" {% if height_in == "3" %}selected{% endif %}>3 in</option>
+  		<option value="4" {% if height_in == "4" %}selected{% endif %}>4 in</option>
+  		<option value="5" {% if height_in == "5" %}selected{% endif %}>5 in</option>
+  		<option value="6" {% if height_in == "6" %}selected{% endif %}>6 in</option>
+  		<option value="7" {% if height_in == "7" %}selected{% endif %}>7 in</option>
+  		<option value="8" {% if height_in == "8" %}selected{% endif %}>8 in</option>
+  		<option value="9" {% if height_in == "9" %}selected{% endif %}>9 in</option>
+  		<option value="10" {% if height_in == "10" %}selected{% endif %}>10 in</option>
+  		<option value="11" {% if height_in == "11" %}selected{% endif %}>11 in</option>
+		</select>
+		<br>
+
+		<button type="submit" class="pure-button pure-button-primary calmn" value='submit'>Submit</button>
+		</div>
 		</form>
 		{% if bmi_error %}
-			<p id='EO'>{{bmi_error}}</p>
+			<p class="EO">{{bmi_error}}</p>
 		{% elif bmi %}
 			{% if bmi | float <= 18.5 %}
-				<h4 id="UW">your Body mass Index: <span>{{bmi}}</span> & Let's mindfully nourish your body with wholesome foods to support healthy weight and vitality</h4>
+				<h4 class="UW">your Body mass Index: <span>{{bmi}}</span> & Let's mindfully nourish your body with wholesome foods to support healthy weight and vitality</h4>
 			{%elif bmi | float <= 24.9 %}
-				<h4 id="NW">your Body mass Index: <span>{{bmi}}</span> & Excellent work maintaining a balanced diet; continue prioritizing your well-being with these healthy choices</h4>
+				<h4 class="NW">your Body mass Index: <span>{{bmi}}</span> & Excellent work maintaining a balanced diet; continue prioritizing your well-being with these healthy choices</h4>
 			{%elif bmi | float <= 29.9 %}
-				<h4 id="OW">your Body mass Index: <span>{{bmi}}</span> & Let's focus on nurturing healthy habits that gently guide you towards a healthier weight</h4>
+				<h4 class="OW">your Body mass Index: <span>{{bmi}}</span> & Let's focus on nurturing healthy habits that gently guide you towards a healthier weight</h4>
 			{%elif bmi | float <= 34.9 %}
-				<h4 id="O">your Body mass Index: <span>{{bmi}}</span> & It's important to thoughtfully plan and commit to a balanced, healthy approach for achieving your weight loss goals</h4>
+				<h4 class="O">your Body mass Index: <span>{{bmi}}</span> & It's important to thoughtfully plan and commit to a balanced, healthy approach for achieving your weight loss goals</h4>
 			{%elif bmi | float >=35.0 %}
-				<h4 id="EO">your Body mass Index: <span>{{bmi}}</span> & Your health is paramount; let's give serious and caring attention to making positive changes for your well-being</h4>
+				<h4 class="EO">your Body mass Index: <span>{{bmi}}</span> & Your health is paramount; let's give serious and caring attention to making positive changes for your well-being</h4>
 			{% endif %}
 			
 		{% endif %}
@@ -48,27 +74,27 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td id="UW">Under Weight</td>
+					<td class="UW">Under Weight</td>
 					<td>18.5</td>
 					<td>Nutrition Deficiency & Fragile Bones</td>
 				</tr>
 				<tr>
-					<td id="NW">Normal Weight</td>
+					<td class="NW">Normal Weight</td>
 					<td>18.5-24.9</td>
 					<td>Overall Good</td>
 				</tr>
 				<tr>
-					<td id="OW">Over Weight</td>
+					<td class="OW">Over Weight</td>
 					<td>25.0-29.9</td>
 					<td>Type 2 Diabetics & Heart Related issues</td>
 				</tr>
 				<tr>
-					<td id="O">Obese</td>
+					<td class="O">Obese</td>
 					<td>30.0-34.9</td>
 					<td>Heart disease & Stroke & Osteoarthritis</td>
 				</tr>
 				<tr>
-					<td id="EO">Extremely Obese</td>
+					<td class="EO">Extremely Obese</td>
 					<td>>35.0</td>
 					<td>Certain Cancers & Metabolic</td>
 				</tr>

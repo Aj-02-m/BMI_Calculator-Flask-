@@ -29,15 +29,19 @@ def bmi_calculator():
     
     if request.method == 'POST':
         weight = request.form.get('weight','')
-        height = request.form.get('height','')
+        height_ft = request.form.get('height_ft','')
+        height_in = request.form.get('height_in','')
         
         session['weight'] = weight
-        session['height'] = height
+        session['height_ft'] = height_ft
+        session['height_in'] = height_in
         try:
             weight_val = float(weight)
-            height_val = float(height)
-            if 20 <= weight_val <= 300 and 50 <= height_val <= 250:
-                session['bmi'] = round(weight_val/((height_val /100)**2),2)
+            height_ft = int(height_ft) if height_ft else 0
+            height_in = int(height_in) if height_in else 0
+            height_val = ((height_ft * 12 + height_in)*2.54)/100
+            if 20 <= weight_val <= 300 and 0.5 <= height_val <= 2.5:
+                session['bmi'] = round(weight_val/((height_val)**2),2)
                 session['bmi_error'] = ''
             else:
                 session['bmi_error'] = "Error! Please enter realistic values for height and weight"
@@ -47,8 +51,9 @@ def bmi_calculator():
     bmi = session.pop('bmi','')
     bmi_error = session.pop('bmi_error','')
     weight = session.pop('weight','')
-    height = session.pop('height','')
-    return render_template('index.html',bmi=bmi,bmi_error=bmi_error,weight=weight,height=height)
+    height_ft = session.pop('height_ft','')
+    height_in = session.pop('height_in','')
+    return render_template('index.html',bmi=bmi,bmi_error=bmi_error,weight=weight,height_ft=height_ft,height_in=height_in)
 
     
     
